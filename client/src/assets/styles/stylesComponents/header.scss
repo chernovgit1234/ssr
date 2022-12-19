@@ -1,0 +1,259 @@
+
+@import "../mixins.scss";
+@import "../variables.scss";
+
+.header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    &__wrapper {
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 0;
+        z-index: 55;
+    }
+
+    &__container {
+    }
+
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: rem(5) 0px;
+        min-height: rem(130);
+        gap: rem(5);
+
+        @media (max-width:$tablet){
+            
+            min-height: rem(110); 
+        }
+        @media (max-width:$mobile){
+            min-height: rem(70);
+        }
+    }
+
+    &__logo {
+        position: relative;
+        z-index: 10;
+        
+        span {
+          white-space: nowrap;
+          border-radius: rem(22);
+          padding: rem(7) rem(12);
+          font-size: rem(44);
+          //@include adaptiveValue("font-size", 44, 22, 1);
+          font-weight: 700;
+          transition: all 0.3s ease 0s;
+          color: rgb(235, 50, 50);
+          background: rgb(249,80,43);
+          background: linear-gradient(0deg, rgb(241, 150, 88) 0%, rgba(218, 214, 22, 0.897) 100%);
+   
+            @media (max-width:$tablet){
+            font-size: rem(33);
+            border-radius: rem(18);
+            }
+
+            @media (max-width:$mobile){
+            font-size: rem(22);
+            border-radius: rem(11);
+            }
+
+            @media (any-hover: hover){
+            &:hover{
+                color: rgb(255, 0, 0);
+            }
+            } 
+        }
+    }
+
+    &__menu {
+        
+    }
+
+    &__button {
+        border-radius: rem(22);
+        border: 1px solid rgb(180, 209, 75);
+        padding: rem(15) rem(35);
+        font-size: rem(20);
+        font-weight: 400;
+        color: rgb(87, 79, 79);
+        display: block;
+        @media (max-width:$mobile){
+            display: none;
+        }
+
+        @media (any-hover: hover){
+            &:hover{
+                background-color: rgb(180, 209, 75);
+                background: rgb(249,80,43);
+                background: linear-gradient(0deg, rgb(241, 150, 88) 0%, rgba(218, 214, 22, 0.897) 100%);
+                color: white;
+                font-weight: 500;
+            }
+        } 
+    }
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: rem(800);
+    padding: rem(10) rem(10);
+    justify-content: flex-end;
+
+    &__body {
+        display: flex;
+        width: 100%;
+
+        @media (max-width:$mobile){
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            top: 0;
+            left: 0;
+            background-color: rgba(46, 44, 44, 0.959);
+            padding: rem(100) rem(15) rem(20) rem(15);
+            transition: left 0.3s ease 0s;
+        }
+    }
+
+    &__list {
+        width: 100%;
+        @include adaptiveValue("gap", 15,10, 1);
+
+        li:last-child {
+            display: none;
+        }
+        @media (min-width:$mobile){
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            flex-wrap: nowrap;
+        }
+
+        @media (max-width:$mobile){
+            li {
+                margin-bottom: rem(40);
+                display: block;
+            }
+
+            li:last-child {
+                display: block;
+            }
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: rem(6);
+       
+        
+        @media (any-hover: hover){
+            &:hover{
+                border-bottom: 1px solid rgb(149, 185, 83);
+                padding-bottom: rem(5)
+            }
+        }
+
+        @media (max-width:$mobile){
+            margin-bottom: rem(20);
+            
+        }
+    }
+
+    &__link {
+        font-size: rem(20);
+        font-weight: 400;
+        color: rgb(87, 79, 79);
+        
+        width: 100%;
+        display: block;
+
+        
+        @media (max-width:$mobile){
+            font-size: rem(26);
+            font-weight: 600;
+            color: rgb(255, 255, 255);
+        }
+    }
+
+    &__icon {
+        display: none;
+        @media (max-width:$mobile){
+            display: block; 
+        }
+
+        &_btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+    }
+}
+
+._menu-icon {
+    min-width: rem(55);
+    min-height: rem(55);
+    cursor: pointer;
+  }
+/* .icon-menu {
+    
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		flex: 0 0 rem(50);
+		min-height: rem(27);
+		cursor: pointer;
+		z-index: 6;
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(3);
+			background-color: rgb(97, 96, 96);
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
+
+
+
+ */

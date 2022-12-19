@@ -1,0 +1,18 @@
+@import "./null.scss";
+@import "./variables.scss";
+@import "./mixins.scss";
+
+@import url("./stylesComponents/header.scss");
+@import url("./stylesComponents/footer.scss");
+@import url("./stylesComponents/app.scss");
+@import url("../../views/Home/Home/home.scss");
+
+._container {
+  max-width: $maxWidthContainer +px;
+  margin: 0 auto;
+  padding: 0px 15px;
+}
+
+.btn {
+  cursor: pointer;
+}
